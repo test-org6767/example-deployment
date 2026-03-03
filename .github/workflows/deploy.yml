@@ -24,7 +24,7 @@ jobs:
       # Assumes you have DEPLOY_HOST, DEPLOY_SSH_USER (optional), and DEPLOY_SSH_KEY configured
       # as organization secrets or repository secrets
       - name: Deploy to server
-        uses: your-org/deploy-action@v1
+        uses: test-org6767/deploy-action@v1
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           ssh-user: ${{ secrets.DEPLOY_SSH_USER }}  # optional, defaults to root
