@@ -1,0 +1,31 @@
+# .github/workflows/deploy.yml
+# GitHub Actions workflow for automated deployment
+
+name: Deploy to Production
+
+# Trigger deployment on push to main branch
+# or manually via workflow_dispatch
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Server
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Deploy using the action
+      # Assumes you have DEPLOY_HOST, DEPLOY_SSH_USER (optional), and DEPLOY_SSH_KEY configured
+      # as organization secrets or repository secrets
+      - name: Deploy to server
+        uses: your-org/deploy-action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          ssh-user: ${{ secrets.DEPLOY_SSH_USER }}  # optional, defaults to root
+          ssh-key: ${{ secrets.DEPLOY_SSH_KEY }}
